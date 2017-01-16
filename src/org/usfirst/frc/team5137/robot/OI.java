@@ -38,8 +38,10 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public Joystick driveStick;
+	public Joystick driveStick2;
 	
 	public OI() {
 		driveStick = new Joystick(0);
+		driveStick2 = new Joystick(1);
 	}
 }
