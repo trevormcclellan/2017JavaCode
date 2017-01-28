@@ -17,11 +17,13 @@ public class RobotMap {
 	public static SpeedController driveBaseRightMotor;
 	public static SpeedController slideDriveMotor;
 	public static RobotDrive driveBaseChassis;
+	public static SpeedController intakeRollerMotor;
 	
 	public static void init() {
 		driveBaseLeftMotor = new VictorSP(0);
 		driveBaseRightMotor = new VictorSP(1);
 		slideDriveMotor = new Spark(2);
+		intakeRollerMotor = new Spark(3);
 		driveBaseChassis = new RobotDrive(driveBaseLeftMotor, driveBaseRightMotor);
 	}
 
