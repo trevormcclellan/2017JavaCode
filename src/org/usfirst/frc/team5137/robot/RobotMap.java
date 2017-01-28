@@ -23,6 +23,13 @@ public class RobotMap {
 		driveBaseRightMotor = new VictorSP(1);
 		slideDriveMotor = new Spark(2);
 		driveBaseChassis = new RobotDrive(driveBaseLeftMotor, driveBaseRightMotor);
+		
+		driveBaseChassis.setSafetyEnabled(true);
+		driveBaseChassis.setExpiration(0.1);
+		driveBaseChassis.setSensitivity(0.5);
+		driveBaseChassis.setMaxOutput(1.0);
+		driveBaseLeftMotor.setInverted(true);
+		driveBaseRightMotor.setInverted(true);
 	}
 
 	// If you are using multiple modules, make sure to define both the port
