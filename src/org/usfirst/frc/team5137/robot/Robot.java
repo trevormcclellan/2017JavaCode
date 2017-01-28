@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveBase driveBase;
 	public static SlideDrive slideDrive;
+	public static IntakeRoller intakeRoller;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		oi = new OI();
 		driveBase = new DriveBase();
+		intakeRoller = new IntakeRoller();
 		slideDrive = new SlideDrive();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());

@@ -1,7 +1,9 @@
 package org.usfirst.frc.team5137.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.*;
+import org.usfirst.frc.team5137.robot.commands.*;
 
 import org.usfirst.frc.team5137.robot.commands.ExampleCommand;
 
@@ -39,9 +41,12 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	public Joystick driveStick;
 	public Joystick driveStick2;
+	public Button intakeButton;
 	
 	public OI() {
 		driveStick = new Joystick(0);
 		driveStick2 = new Joystick(1);
+		intakeButton = new JoystickButton(driveStick, 2);
+		intakeButton.whileHeld(new RollIntake());
 	}
 }
