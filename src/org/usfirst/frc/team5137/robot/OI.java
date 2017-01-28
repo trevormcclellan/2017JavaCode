@@ -46,7 +46,7 @@ public class OI {
 	public OI() {
 		driveStick = new Joystick(0);
 		driveStick2 = new Joystick(1);
-		intakeButton = new JoystickButton(driveStick, 2);
+		intakeButton = new JoystickButton(driveStick2, 1);
 		intakeButton.whileHeld(new RollIntake());
 	}
 }
