@@ -39,11 +39,14 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	public Joystick driveStick;
 	public Joystick driveStick2;
-	public Button intakeButton;
+	public JoystickButton intake;
+	public JoystickButton intakeButton;
 	
 	public OI() {
 		driveStick = new Joystick(0);
 		driveStick2 = new Joystick(1);
+		//intake = new JoystickButton(driveStick2, 1);
+		//intake.whileHeld(new RollIntake());
 		intakeButton = new JoystickButton(driveStick2, 1);
 		intakeButton.whileHeld(new RollIntake());
 	}

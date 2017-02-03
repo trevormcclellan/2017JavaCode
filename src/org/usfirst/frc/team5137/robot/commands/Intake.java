@@ -1,18 +1,18 @@
 package org.usfirst.frc.team5137.robot.commands;
 
-import org.usfirst.frc.team5137.robot.*;
-
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team5137.robot.*;
 
 /**
  *
  */
-public class RollIntake extends Command {
+public class Intake extends Command {
 
-    public RollIntake() {
-    	requires(Robot.intakeRoller);
+    public Intake() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.intakeRoller);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -21,8 +21,7 @@ public class RollIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.intakeRoller.intake();
-    	Robot.intakeRoller.takeZAxis(Robot.oi.driveStick2);
+    	Robot.intakeRoller.intake();
     }
 
     // Make this return true when this Command no longer needs to run execute()
