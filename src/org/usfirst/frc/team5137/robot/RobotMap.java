@@ -18,12 +18,14 @@ public class RobotMap {
 	public static SpeedController slideDriveMotor;
 	public static RobotDrive driveBaseChassis;
 	public static SpeedController intakeRollerMotor;
+	public static SpeedController shooterMotor;
 	
 	public static void init() {
 		driveBaseLeftMotor = new VictorSP(0);
 		driveBaseRightMotor = new VictorSP(1);
 		slideDriveMotor = new Spark(2);
 		intakeRollerMotor = new Spark(3);
+		shooterMotor = new Spark(4);
 		driveBaseChassis = new RobotDrive(driveBaseLeftMotor, driveBaseRightMotor);
 		
 		driveBaseChassis.setSafetyEnabled(true);
