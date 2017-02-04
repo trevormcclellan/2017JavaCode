@@ -19,6 +19,7 @@ public class RobotMap {
 	public static RobotDrive driveBaseChassis;
 	public static SpeedController intakeRollerMotor;
 	public static SpeedController shooterMotor;
+	public static ADXRS450_Gyro gyro;
 	
 	public static void init() {
 		driveBaseLeftMotor = new VictorSP(0);
@@ -27,6 +28,7 @@ public class RobotMap {
 		intakeRollerMotor = new Spark(3);
 		shooterMotor = new Spark(4);
 		driveBaseChassis = new RobotDrive(driveBaseLeftMotor, driveBaseRightMotor);
+		gyro = new ADXRS450_Gyro();
 		
 		driveBaseChassis.setSafetyEnabled(true);
 		driveBaseChassis.setExpiration(0.1);

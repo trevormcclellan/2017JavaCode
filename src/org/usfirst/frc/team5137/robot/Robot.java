@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		RobotMap.init();
+		RobotMap.gyro.calibrate();  
 		driveBase = new DriveBase();
 		slideDrive = new SlideDrive();
 		intakeRoller = new IntakeRoller();
