@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 
 import org.usfirst.frc.team5137.robot.commands.*;
 import org.usfirst.frc.team5137.robot.subsystems.*;
@@ -21,6 +23,7 @@ import org.usfirst.frc.team5137.robot.subsystems.*;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static UsbCamera camera;
 	public static OI oi;
 	public static DriveBase driveBase;
 	public static SlideDrive slideDrive;
@@ -41,6 +44,8 @@ public class Robot extends IterativeRobot {
 		slideDrive = new SlideDrive();
 		intakeRoller = new IntakeRoller();
 		shooter = new Shooter();
+		camera = CameraServer.getInstance().startAutomaticCapture();
+		camera.setResolution(1280, 720);
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
         // constructed yet. Thus, their requires() statements may grab null 
