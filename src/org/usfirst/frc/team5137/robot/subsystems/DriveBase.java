@@ -67,7 +67,7 @@ public class DriveBase extends Subsystem {
 		}
 	}
 	
-public void centerY() {
+	public void centerY() {
 		isYCentered = false;
 		yCoord = aimingTable.getNumber("COG_y", 0);
 		if (yCoord == 0) {
