@@ -11,16 +11,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 	SpeedController shooterMotor = RobotMap.shooterMotor;
+	SpeedController feederMotor = RobotMap.feederMotor;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
 	public void shoot() {
 		shooterMotor.set(1);
+		Timer.delay(0.5);
+		feederMotor.set(1);
 	}
 	
 	public void stop() {
 		shooterMotor.set(0);
+		feederMotor.set(0);
 	}
 	
     public void initDefaultCommand() {
