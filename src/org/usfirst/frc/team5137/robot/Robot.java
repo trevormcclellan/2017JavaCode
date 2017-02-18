@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.I2C.*;
+import edu.wpi.first.wpilibj.*;
 
 import org.usfirst.frc.team5137.robot.commands.*;
 import org.usfirst.frc.team5137.robot.subsystems.*;
@@ -29,6 +32,9 @@ public class Robot extends IterativeRobot {
 	public static SlideDrive slideDrive;
 	public static IntakeRoller intakeRoller;
 	public static Shooter shooter;
+	DriverStation.Alliance color;
+    public static I2C I2C;
+    public static byte[] testByte;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -47,6 +53,7 @@ public class Robot extends IterativeRobot {
 		shooter = new Shooter();
 		camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(1280, 720);
+		color = DriverStation.getInstance().getAlliance();
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
         // constructed yet. Thus, their requires() statements may grab null 
@@ -105,6 +112,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		testByte[0] = 42;
+		I2C.writeBulk(testByte);
 	}
 
 	@Override
@@ -115,6 +124,16 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+
+		if(color == DriverStation.Alliance.Blue){
+			testByte[0] = 22;
+			I2C.writeBulk(testByte);
+		}
+		
+		else if (color == DriverStation.Alliance.Red) {
+			testByte[0] = 4;
+			I2C.writeBulk(testByte);
+		}
 	}
 
 	/**
