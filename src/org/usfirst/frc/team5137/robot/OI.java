@@ -41,6 +41,7 @@ public class OI {
 	public Joystick driveStick2;
 	public JoystickButton intakeButton;
 	public JoystickButton shooterButton;
+	public JoystickButton climbButton;
 	
 	public OI() {
 		driveStick = new Joystick(0);
@@ -51,5 +52,8 @@ public class OI {
 		intakeButton.whileHeld(new RollIntake());
 		shooterButton = new JoystickButton(driveStick, 1);
 		shooterButton.whileHeld(new Shoot());
+		climbButton = new JoystickButton(driveStick2, 3);
+		climbButton.whileHeld(new Climb());
+		
 	}
 }

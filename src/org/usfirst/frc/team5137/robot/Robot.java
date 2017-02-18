@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static SlideDrive slideDrive;
 	public static IntakeRoller intakeRoller;
 	public static Shooter shooter;
+	public static Climber climber;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 		slideDrive = new SlideDrive();
 		intakeRoller = new IntakeRoller();
 		shooter = new Shooter();
+		climber = new Climber();
 		camera = CameraServer.getInstance().startAutomaticCapture();
 		camera.setResolution(1280, 720);
         // OI must be constructed after subsystems. If the OI creates Commands 
