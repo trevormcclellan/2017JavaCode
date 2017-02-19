@@ -49,7 +49,9 @@ public class OI {
 		//intake.whileHeld(new RollIntake());
 		intakeButton = new JoystickButton(driveStick2, 1);
 		intakeButton.whileHeld(new RollIntake());
+		//shooterButton = new JoystickButton(driveStick, 1);
+		//shooterButton.whileHeld(new Shoot());
 		shooterButton = new JoystickButton(driveStick, 1);
-		shooterButton.whileHeld(new Shoot());
+		shooterButton.whileHeld(new DriveStraight());
 	}
 }

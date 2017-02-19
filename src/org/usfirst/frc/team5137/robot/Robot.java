@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
 	DriverStation.Alliance color;
     public static I2C I2C;
     public static byte[] testByte;
+    public String station;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -126,13 +127,15 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 
 		if(color == DriverStation.Alliance.Blue){
-			testByte[0] = 22;
-			I2C.writeBulk(testByte);
+			SmartDashboard.putString(station, "Blue");
+			//testByte[0] = 22;
+			//I2C.writeBulk(testByte);
 		}
 		
 		else if (color == DriverStation.Alliance.Red) {
-			testByte[0] = 4;
-			I2C.writeBulk(testByte);
+			SmartDashboard.putString(station, "Red");
+			//testByte[0] = 4;
+			//I2C.writeBulk(testByte);
 		}
 	}
 
