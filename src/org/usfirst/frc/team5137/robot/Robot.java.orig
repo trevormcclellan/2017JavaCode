@@ -32,11 +32,14 @@ public class Robot extends IterativeRobot {
 	public static SlideDrive slideDrive;
 	public static IntakeRoller intakeRoller;
 	public static Shooter shooter;
-	public static Climber climber;
+<<<<<<< HEAD
 	DriverStation.Alliance color;
     public static I2C I2C;
     public static byte[] testByte;
     public String station;
+=======
+	public static Climber climber;
+>>>>>>> dev_rr
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();

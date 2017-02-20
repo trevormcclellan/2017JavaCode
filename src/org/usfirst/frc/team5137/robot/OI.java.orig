@@ -50,10 +50,16 @@ public class OI {
 		//intake.whileHeld(new RollIntake());
 		intakeButton = new JoystickButton(driveStick2, 1);
 		intakeButton.whileHeld(new RollIntake());
+		//shooterButton = new JoystickButton(driveStick, 1);
+		//shooterButton.whileHeld(new Shoot());
 		shooterButton = new JoystickButton(driveStick, 1);
+<<<<<<< HEAD
+		shooterButton.whileHeld(new DriveStraight());
+=======
 		shooterButton.whileHeld(new Shoot());
 		climbButton = new JoystickButton(driveStick2, 3);
 		climbButton.whileHeld(new Climb());
 		
+>>>>>>> dev_rr
 	}
 }

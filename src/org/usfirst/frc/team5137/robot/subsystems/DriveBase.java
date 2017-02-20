@@ -36,17 +36,17 @@ public class DriveBase extends Subsystem {
 	
 	public void driveStraight(double speed) {
 		double angle = gyro.getAngle(); // get current heading
-        chassis.drive(-1.0, -angle*Kp); // drive towards heading 0
+        chassis.drive(speed, -angle*Kp); // drive towards heading 0
 	}
 	
 	public void pivotLeft() {
-		leftMotor.set(0.3);
-		rightMotor.set(-0.3);
+		leftMotor.set(-0.3);
+		rightMotor.set(0.3);
 	}
 	
 	public void pivotRight() {
-		leftMotor.set(-0.3);
-		rightMotor.set(0.3);
+		leftMotor.set(0.3);
+		rightMotor.set(-0.3);
 	}
 
 	public void centerX() {
@@ -74,10 +74,10 @@ public class DriveBase extends Subsystem {
 			stop();
 		}
 		else if (yCoord > centerY + 2) {
-			driveStraight(-0.3);
+			driveStraight(0.3);
 		}
 		else if (yCoord < centerY - 2) {
-			driveStraight(0.3);
+			driveStraight(-0.3);
 		}
 		else {
 			isYCentered = true;
