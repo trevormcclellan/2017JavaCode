@@ -22,6 +22,10 @@ public class RobotMap {
 	public static SpeedController feederMotor;
 	public static SpeedController climberMotor;
 	public static ADXRS450_Gyro gyro;
+	public static AnalogInput rearUltraSonic;
+	public static AnalogInput leftUltraSonic;
+	public static AnalogInput frontUltraSonic;
+	public static AnalogInput rightUltraSonic;
 	
 	public static void init() {
 		driveBaseLeftMotor = new VictorSP(0);
@@ -33,6 +37,10 @@ public class RobotMap {
 		climberMotor = new Spark(4);
 		driveBaseChassis = new RobotDrive(driveBaseLeftMotor, driveBaseRightMotor);
 		gyro = new ADXRS450_Gyro();
+		rearUltraSonic = new AnalogInput(0);
+		leftUltraSonic = new AnalogInput(1);
+		frontUltraSonic = new AnalogInput(2);
+		rightUltraSonic = new AnalogInput(3);
 		
 		driveBaseChassis.setSafetyEnabled(true);
 		driveBaseChassis.setExpiration(0.1);

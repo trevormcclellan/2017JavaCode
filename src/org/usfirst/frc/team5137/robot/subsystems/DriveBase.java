@@ -19,8 +19,8 @@ public class DriveBase extends Subsystem {
 	public boolean isYCentered = false;
 	private static double xCoord;
 	private static double yCoord;
-	double centerX;
-	double centerY;
+	double centerX = 158;
+	double centerY = 86;
 	
 	double Kp = 0.03;
     // Put methods for controlling this subsystem
@@ -33,6 +33,10 @@ public class DriveBase extends Subsystem {
 	public void drive(double speed, double turnRate) {
 		chassis.drive(speed, turnRate);
 	}
+	
+    public void autoDrive(double speed, double turn) {
+    	chassis.drive(speed, turn);
+    }
 	
 	public void driveStraight(double speed) {
 		double angle = gyro.getAngle(); // get current heading

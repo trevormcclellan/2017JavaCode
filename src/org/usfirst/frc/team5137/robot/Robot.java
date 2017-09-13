@@ -54,17 +54,31 @@ public class Robot extends IterativeRobot {
 		intakeRoller = new IntakeRoller();
 		shooter = new Shooter();
 		climber = new Climber();
+		I2C = new I2C(edu.wpi.first.wpilibj.I2C.Port.kMXP ,84);
 		camera = CameraServer.getInstance().startAutomaticCapture();
-		camera.setResolution(1280, 720);
+		camera.setResolution(320, 240);
+		//camera.setFPS(10);
 		color = DriverStation.getInstance().getAlliance();
+		chooser.addDefault("Do Nothing", new ExampleCommand());
+		chooser.addObject("Gear Auto", new GearAuto());
+		chooser.addObject("Drive Forward", new DriveForward());
+		chooser.addObject("Hopper Auto Blue", new HopperAuto(0));
+		chooser.addObject("Hopper Auto Red", new HopperAuto(1));
+		chooser.addObject("Low Goal Auto Blue", new LowGoalAutoBlue());
+		chooser.addObject("Low Goal Auto Red", new LowGoalAutoRed());
+		
+		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putNumber("Rear Distance", RobotMap.rearUltraSonic.getVoltage());
+		SmartDashboard.putNumber("Left Distance", RobotMap.leftUltraSonic.getVoltage());
+		SmartDashboard.putNumber("Front Distance", RobotMap.frontUltraSonic.getVoltage());
+		SmartDashboard.putNumber("Right Distance", RobotMap.rightUltraSonic.getVoltage());
+        //testByte = new byte;
         // OI must be constructed after subsystems. If the OI creates Commands 
         //(which it very likely will), subsystems are not guaranteed to be 
         // constructed yet. Thus, their requires() statements may grab null 
         // pointers. Bad news. Don't move it.
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
+
 	}
 
 	/**
@@ -95,7 +109,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		I2C.write(84, 42);
 		autonomousCommand = chooser.getSelected();
+		//autonomousCommand = new HopperAuto();
+		shooter.releaseGear();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -115,8 +132,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		testByte[0] = 42;
-		I2C.writeBulk(testByte);
+
 	}
 
 	@Override
@@ -131,13 +147,14 @@ public class Robot extends IterativeRobot {
 		if(color == DriverStation.Alliance.Blue){
 			SmartDashboard.putString(station, "Blue");
 			//testByte[0] = 22;
-			//I2C.writeBulk(testByte);
+			I2C.write(84, 22);
 		}
 		
 		else if (color == DriverStation.Alliance.Red) {
 			SmartDashboard.putString(station, "Red");
 			//testByte[0] = 4;
 			//I2C.writeBulk(testByte);
+			I2C.write(84, 4);
 		}
 	}
 

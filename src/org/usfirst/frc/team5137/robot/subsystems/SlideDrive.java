@@ -19,6 +19,10 @@ public class SlideDrive extends Subsystem {
 		slideDriveMotor.set(xIn);
 	}
 	
+	public void autoDrive(double driveSpeed) {
+		slideDriveMotor.set(driveSpeed);
+	}
+	
 	public void stop() {
 		slideDriveMotor.set(0);
 	}

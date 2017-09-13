@@ -14,6 +14,10 @@ public class Climber extends Subsystem {
 		climberMotor.set(1);
 	}
 	
+	public void unRoll() {
+		climberMotor.set(-1);
+	}
+	
 	public void stop() {
 		climberMotor.set(0);
 	}

@@ -2,14 +2,13 @@ package org.usfirst.frc.team5137.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5137.robot.*;
-
 /**
  *
  */
-public class DriveStraight extends Command {
+public class UnrollClimber extends Command {
 
-    public DriveStraight() {
-    	requires(Robot.driveBase);
+    public UnrollClimber() {
+    	requires(Robot.climber);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,7 +19,7 @@ public class DriveStraight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveBase.driveStraight(0.1);
+    	Robot.climber.unRoll();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +29,7 @@ public class DriveStraight extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveBase.drive(0, 0);
+    	Robot.climber.stop();
     }
 
     // Called when another command which requires one or more of the same

@@ -42,6 +42,9 @@ public class OI {
 	public JoystickButton intakeButton;
 	public JoystickButton shooterButton;
 	public JoystickButton climbButton;
+	public JoystickButton lowGoalButton;
+	public JoystickButton unrollButton;
+	public JoystickButton aimAndShootButton;
 	
 	public OI() {
 		driveStick = new Joystick(0);
@@ -54,6 +57,11 @@ public class OI {
 		shooterButton.whileHeld(new Shoot());
 		climbButton = new JoystickButton(driveStick2, 3);
 		climbButton.whileHeld(new Climb());
-		
+		lowGoalButton = new JoystickButton(driveStick, 2);
+		lowGoalButton.whileHeld(new LowGoalShoot());
+		unrollButton = new JoystickButton(driveStick2, 2);
+		unrollButton.whileHeld(new UnrollClimber());
+		shooterButton = new JoystickButton(driveStick, 6);
+		shooterButton.whileHeld(new AimAndShoot());
 	}
 }
